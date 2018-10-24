@@ -1,0 +1,55 @@
+C51 COMPILER V9.01   MAIN                                                                  06/03/2018 23:40:01 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "reg52.h"
+   2          #include "intrins.h"
+   3          
+   4          
+   5          
+   6          typedef unsigned char u8;
+   7          
+   8          sbit btn=P2^0;
+   9          sbit led=P0^0;
+  10          
+  11          void delay(u8 i){while(i--){};}   //10us
+  12          
+  13          void checkBtn(){
+  14   1              if(btn==0){
+  15   2                      delay(1000);
+  16   2                      if(btn==0){
+  17   3                        led=~led;
+  18   3                      }
+  19   2                      while(!btn);
+  20   2              }
+  21   1      
+  22   1      }
+  23          
+  24          void main(){
+  25   1              while(1){
+  26   2              
+  27   2                      checkBtn();
+  28   2                      
+  29   2                      
+  30   2              }
+  31   1              
+  32   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     29    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
