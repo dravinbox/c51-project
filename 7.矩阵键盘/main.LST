@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MAIN                                                                  06/04/2018 21:44:50 PAGE 1   
+C51 COMPILER V9.01   MAIN                                                                  05/29/2019 19:19:34 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
@@ -23,47 +23,48 @@ line level    source
   14          u8 keyValue;
   15          void delay(u16 i){while(i--);}
   16          
-  17          void keyDown(){
-  18   1              char a=0;
-  19   1              GPIO_KEY=0x0f;
-  20   1              if(GPIO_KEY!=0x0f){
-  21   2                      delay(1000);
-  22   2                      if(GPIO_KEY!=0x0f){
-  23   3                               switch(GPIO_KEY){
-  24   4                                      case(0x07) :keyValue=0;break;
-  25   4                                      case(0x0b) :keyValue=1;break;
-  26   4                                      case(0x0d) :keyValue=2;break;
-  27   4                                      case(0x0e) :keyValue=3;break;
-  28   4                               }
-  29   3                               GPIO_KEY=0xf0;
-  30   3                               switch(GPIO_KEY){
-  31   4                                      case(0x70) :keyValue=keyValue;break;
-  32   4                                      case(0xb0) :keyValue=keyValue+4;break;
-  33   4                                      case(0xd0) :keyValue=keyValue+8;break;
-  34   4                                      case(0xe0) :keyValue=keyValue+12;break;
-  35   4                               }
-  36   3                               while((a<50)&&(GPIO_KEY!=0xf0)){
-  37   4                                       delay(1000);
-  38   4                                       a++;
-  39   4                               }
-  40   3                      }
-  41   2              }
-  42   1      }                 
-  43          
-  44          void main(){
-  45   1      
-  46   1              while(1){
-  47   2              
-  48   2                      keyDown();      
-  49   2                      GPIO_DIG=~smgduan[keyValue];
-  50   2              }
-  51   1              
-  52   1      }
+  17          //这个函数能修改KeyValue的值0-15
+  18          void keyDown(){
+  19   1              char a=0;
+  20   1              GPIO_KEY=0x0f;
+  21   1              if(GPIO_KEY!=0x0f){
+  22   2                      delay(1000);
+  23   2                      if(GPIO_KEY!=0x0f){
+  24   3                               switch(GPIO_KEY){
+  25   4                                      case(0x07) :keyValue=0;break;
+  26   4                                      case(0x0b) :keyValue=1;break;
+  27   4                                      case(0x0d) :keyValue=2;break;
+  28   4                                      case(0x0e) :keyValue=3;break;
+  29   4                               }
+  30   3                               GPIO_KEY=0xf0;
+  31   3                               switch(GPIO_KEY){
+  32   4                                      case(0x70) :keyValue=keyValue;break;
+  33   4                                      case(0xb0) :keyValue=keyValue+4;break;
+  34   4                                      case(0xd0) :keyValue=keyValue+8;break;
+  35   4                                      case(0xe0) :keyValue=keyValue+12;break;
+  36   4                               }
+  37   3                               while((a<50)&&(GPIO_KEY!=0xf0)){
+  38   4                                       delay(1000);
+  39   4                                       a++;
+  40   4                               }
+  41   3                      }
+  42   2              }
+  43   1      }                 
+  44          
+  45          void main(){
+  46   1      
+  47   1              while(1){
+  48   2              
+  49   2                      keyDown();      
+  50   2                      GPIO_DIG=~smgduan[keyValue];
+  51   2              }
+  52   1              
+  53   1      }
 
+
+C51 COMPILER V9.01   MAIN                                                                  05/29/2019 19:19:34 PAGE 2   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-C51 COMPILER V9.01   MAIN                                                                  06/04/2018 21:44:50 PAGE 2   
-
    CODE SIZE        =    154    ----
    CONSTANT SIZE    =     16    ----
    XDATA SIZE       =   ----    ----

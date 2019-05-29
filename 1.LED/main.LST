@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MAIN                                                                  06/03/2018 09:45:00 PAGE 1   
+C51 COMPILER V9.01   MAIN                                                                  05/29/2019 21:49:45 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
@@ -23,28 +23,27 @@ line level    source
   14   1          _nop_();  //if Keil,require use intrins.h
   15   1      }
   16          
-  17          void main(){
-  18   1      
-  19   1              //led=0x01;
-  20   1                      
-  21   1          unsigned char a=0x01;
-  22   1              unsigned char b=0x00;
-  23   1               led=a;
-  24   1               
-  25   1              while(1){
-  26   2                      delay1s();
-  27   2                      i++;
-  28   2                      a=a<<1;
-  29   2                      a=a+1;
-  30   2                      if(i==8){
-  31   3                              a=0x01;
-  32   3                              i=0;
-  33   3                      }
-  34   2                      led=a;
-  35   2                      
-  36   2                      
-  37   2              }
-  38   1      }
+  17          //hello world
+  18          void main(){
+  19   1      
+  20   1              //led=0x01;
+  21   1                      
+  22   1          unsigned char a=0x01;
+  23   1              unsigned char b=0x00;
+  24   1               led=a;
+  25   1               
+  26   1              while(1){
+  27   2                      delay1s();
+  28   2                      i++;
+  29   2                      a=a<<1;
+  30   2                      a=a+1;
+  31   2                      if(i==8){
+  32   3                              a=0x01;
+  33   3                              i=0;
+  34   3                      }
+  35   2                      led=a;
+  36   2              }
+  37   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

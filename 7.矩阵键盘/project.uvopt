@@ -179,10 +179,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>30</ColumnNumber>
+      <ColumnNumber>48</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>29</TopLine>
-      <CurrentLine>46</CurrentLine>
+      <TopLine>27</TopLine>
+      <CurrentLine>27</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -1533,10 +1533,10 @@
       <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
-          <Name>.\main.c</Name>
-          <ColumnNumber>30</ColumnNumber>
-          <TopLine>29</TopLine>
-          <CurrentLine>46</CurrentLine>
+          <Name>C:\Users\Administrator\Desktop\WorkspaceC51\1.LED\main.c</Name>
+          <ColumnNumber>4</ColumnNumber>
+          <TopLine>14</TopLine>
+          <CurrentLine>30</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

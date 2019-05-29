@@ -1,0 +1,14 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Administrator\Desktop\WorkspaceC51\7.æÿ’Ûº¸≈Ã\project.uvproj
+Project File Date:  06/03/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+Program Size: data=11.0 xdata=0 code=185
+creating hex file from "project"...
+"project" - 0 Error(s), 0 Warning(s).

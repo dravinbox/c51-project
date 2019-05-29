@@ -33,7 +33,5 @@ void main(){
 			i=0;
 		}
 		led=a;
-		
-		
 	}
 }
