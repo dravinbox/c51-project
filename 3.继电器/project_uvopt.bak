@@ -181,7 +181,7 @@
       <Focus>0</Focus>
       <ColumnNumber>15</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>12</TopLine>
+      <TopLine>14</TopLine>
       <CurrentLine>31</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
@@ -1535,7 +1535,7 @@
         <Doc>
           <Name>.\main.c</Name>
           <ColumnNumber>15</ColumnNumber>
-          <TopLine>12</TopLine>
+          <TopLine>14</TopLine>
           <CurrentLine>31</CurrentLine>
         </Doc>
       </Documents>

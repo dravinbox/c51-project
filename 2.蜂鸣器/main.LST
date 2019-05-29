@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MAIN                                                                  10/21/2018 22:17:39 PAGE 1   
+C51 COMPILER V9.01   MAIN                                                                  05/29/2019 22:24:06 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
@@ -19,9 +19,9 @@ line level    source
   10          
   11          int i=0;
   12          //  无源蜂鸣器需要IO口输出一个频率，通过三极管放大驱动电流 
-  13          //      蜂鸣器的频率范围是1.5~2.5kHZ
+  13          //      蜂鸣器的理论频率范围是1.5~2.5kHZ
   14          //  换算是400~666us
-  15          //  也就是说 i取值是40~66
+  15          //  也就是说 i理论取值是40~66
   16          void delay(unsigned char i){    
   17   1      while(i--);                                             //一次循环大约10个机器周期=10us=0.01ms
   18   1      }
@@ -32,11 +32,12 @@ line level    source
   23   1               
   24   1              while(1){
   25   2                      beep=~beep;
-  26   2                      delay(10);
-  27   2                      
+  26   2                      //实际i可以     取值 4~300
+  27   2                      delay(50);
   28   2                      
-  29   2              }
-  30   1      }
+  29   2                      
+  30   2              }
+  31   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

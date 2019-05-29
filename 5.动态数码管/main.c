@@ -1,75 +1,76 @@
-#include "reg52.h"
-#include "intrins.h"
+/**************************************************************************************
+*		              动态数码管显示实验												  *
+实现现象：下载程序后数码管从左至右显示0-7。
+注意事项：																				  
+***************************************************************************************/
 
-#define led P0
-#define selector P2
+#include "reg52.h"			 //此文件中定义了单片机的一些特殊功能寄存器
 
+typedef unsigned int u16;	  //对数据类型进行声明定义
 typedef unsigned char u8;
 
-u8 nres[8];
+sbit LSA=P2^2;
+sbit LSB=P2^3;
+sbit LSC=P2^4;
 
-void delay(int i){while(i--);}
+//u8 code smgduan[17]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+				//	0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};//一共是0~F的值
+u8 code smgduan[17]={0x06,0x6f,0x6f,0x4f,0x06,0x06,0x3f,0x6d,	   //显示19931105的值
+					0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};	   //这一段没显示出来
 
-  /*
-   //这里为什么向高位左移2呢？
-   //因为它对接38译码器的时候，使用的是P2^2,P2^3,P2^4 
-   //所以需要左移2位，P2管脚的输出才能对的上38译码器
-   */
-void display(u8 *num,int pos){
-   unsigned char a=0x00;
-   a=a+pos;
-   selector=a<<2;
- 
-   led=num[pos];
-
+/*******************************************************************************
+* 函 数 名         : delay
+* 函数功能		   : 延时函数，i=1时，大约延时10us
+*******************************************************************************/
+void delay(u16 i)
+{
+	while(i--);	
 }
 
-
-//显示该数码管数组
-void dynamicLED(u8 *nr){
-		u8 x=0x00;		
-		for(x=0;x<8;x++){
-			
-			display(nr,x);
-			delay(250); //延时 2500us = 2.5 ms 显示正常
-		
-		
+/*******************************************************************************
+* 函 数 名         : DigDisplay
+* 函数功能		   : 数码管动态扫描函数，循环扫描8个数码管显示
+*******************************************************************************/
+void DigDisplay()
+{
+	u8 i;
+	for(i=0;i<8;i++)
+	{
+		switch(i)	 //位选，选择点亮的数码管，
+		{
+			case(0):
+				LSA=0;LSB=0;LSC=0; break;//显示第0位
+			case(1):
+				LSA=1;LSB=0;LSC=0; break;//显示第1位
+			case(2):
+				LSA=0;LSB=1;LSC=0; break;//显示第2位
+			case(3):
+				LSA=1;LSB=1;LSC=0; break;//显示第3位
+			case(4):
+				LSA=0;LSB=0;LSC=1; break;//显示第4位
+			case(5):
+				LSA=1;LSB=0;LSC=1; break;//显示第5位
+			case(6):
+				LSA=0;LSB=1;LSC=1; break;//显示第6位
+			case(7):
+				LSA=1;LSB=1;LSC=1; break;//显示第7位	
 		}
-}
-
-//把数字转化为数码管编码
-u8 getLEDCodeByNum(int num){
-   u8 n[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
-   if(num<0||num>9){
-   		return 0x40;  //如果不是数字，则返回-的编码
-   }else{
-   		return 	n[num];
-   }
-
-}
-
-//把数字的数组  转化为  数码管编码的数组
-u8* changeNumArr2LedCodeArr(int *num){
-		
-		int i;
-		for(i=0;i<8;i++){
-		   nres[i]=getLEDCodeByNum(*(num+i));
-		}
-		return nres;
-
-}
-void main(){
-	while(1){
-		//u8 ne[8]={0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f};
-		//dynamicLED(ne);
-
-		int num[8]={7,9,-1,5,5,-1,3,2};
-		u8 *np=changeNumArr2LedCodeArr(num);
-		dynamicLED(np);
-		
-
-		
-		
+		P0=smgduan[i];//发送段码
+		delay(100); //间隔一段时间扫描	
+		P0=0x00;//消隐
 	}
-	
+}
+
+/*******************************************************************************
+* 函 数 名       : main
+* 函数功能		 : 主函数
+* 输    入       : 无
+* 输    出    	 : 无
+*******************************************************************************/
+void main()
+{	
+	while(1)
+	{	
+		DigDisplay();  //数码管显示函数	
+	}		
 }

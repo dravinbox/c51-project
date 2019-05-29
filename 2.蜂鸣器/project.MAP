@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.41                                                               10/21/2018  22:17:40  PAGE 1
+LX51 LINKER/LOCATER V4.41                                                               05/29/2019  22:24:07  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.41, INVOKED BY:
@@ -67,7 +67,7 @@ _DELAY/MAIN                 ----- -----  ----- -----
 
 
 PUBLIC SYMBOLS OF MODULE:  project (MAIN)
-LX51 LINKER/LOCATER V4.41                                                             10/21/2018  22:17:40  PAGE 2
+LX51 LINKER/LOCATER V4.41                                                             05/29/2019  22:24:07  PAGE 2
 
 
 
@@ -135,7 +135,7 @@ PUBLIC SYMBOLS OF MODULE:  project (MAIN)
 *SFR* 00000099H   DATA     BYTE      SBUF
 *SFR* 00000098H   DATA     BYTE      SCON
 *SFR* 00000098H.7 DATA     BIT       SM0
-LX51 LINKER/LOCATER V4.41                                                             10/21/2018  22:17:40  PAGE 3
+LX51 LINKER/LOCATER V4.41                                                             05/29/2019  22:24:07  PAGE 3
 
 
 *SFR* 00000098H.6 DATA     BIT       SM1
@@ -203,7 +203,7 @@ SYMBOL TABLE OF MODULE:  project (MAIN)
       000000D0H.2 SFRSYM    DATA     BIT       OV
       000000CAH   SFRSYM    DATA     BYTE      RCAP2L
       000000C8H.1 SFRSYM    DATA     BIT       C_T2
-LX51 LINKER/LOCATER V4.41                                                             10/21/2018  22:17:40  PAGE 4
+LX51 LINKER/LOCATER V4.41                                                             05/29/2019  22:24:07  PAGE 4
 
 
       000000B0H.6 SFRSYM    DATA     BIT       WR
@@ -271,12 +271,12 @@ SYMBOL TABLE OF MODULE:  project (MAIN)
       0100008FH   BLOCK     CODE     ---       LVL=0
       0100008FH   LINE      CODE     ---       #20
       0100008FH   LINE      CODE     ---       #24
-LX51 LINKER/LOCATER V4.41                                                             10/21/2018  22:17:40  PAGE 5
+LX51 LINKER/LOCATER V4.41                                                             05/29/2019  22:24:07  PAGE 5
 
 
       0100008FH   LINE      CODE     ---       #25
-      01000091H   LINE      CODE     ---       #26
-      01000096H   LINE      CODE     ---       #29
+      01000091H   LINE      CODE     ---       #27
+      01000096H   LINE      CODE     ---       #30
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       ?C_STARTUP

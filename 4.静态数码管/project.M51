@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/22/2018  23:30:31  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/29/2019  22:38:52  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -25,8 +25,9 @@ LINK MAP OF MODULE:  project (MAIN)
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     000CH     UNIT         ?C_C51STARTUP
-            CODE    000FH     0005H     UNIT         ?PR?MAIN?MAIN
+            CODE    0003H     0011H     UNIT         ?CO?MAIN
+            CODE    0014H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0020H     000AH     UNIT         ?PR?MAIN?MAIN
 
 
 
@@ -38,6 +39,9 @@ SEGMENT
 ---------------------
 ?C_C51STARTUP
   +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?CO?MAIN
 
 
 
@@ -53,21 +57,22 @@ SYMBOL TABLE OF MODULE:  project (MAIN)
   D:00B0H         PUBLIC        P3
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
-  C:000FH         PUBLIC        main
+  C:0020H         PUBLIC        main
   D:0098H         PUBLIC        SCON
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/29/2019  22:38:52  PAGE 2
+
+
   D:0088H         PUBLIC        TCON
   D:00C8H         PUBLIC        T2CON
+  C:0003H         PUBLIC        smgduan
   D:00D0H         PUBLIC        PSW
   -------         PROC          MAIN
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/22/2018  23:30:31  PAGE 2
-
-
-  C:000FH         LINE#         4
-  C:000FH         LINE#         7
-  C:0012H         LINE#         8
-  C:0012H         LINE#         10
+  C:0020H         LINE#         23
+  C:0020H         LINE#         24
+  C:0020H         LINE#         25
+  C:0028H         LINE#         26
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
-Program Size: data=9.0 xdata=0 code=20
+Program Size: data=9.0 xdata=0 code=42
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

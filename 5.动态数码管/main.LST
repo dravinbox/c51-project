@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MAIN                                                                  10/23/2018 20:25:13 PAGE 1   
+C51 COMPILER V9.01   MAIN                                                                  05/29/2019 23:06:24 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
@@ -7,91 +7,92 @@ COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
-   1          #include "reg52.h"
-   2          #include "intrins.h"
-   3          
-   4          #define led P0
-   5          #define selector P2
+   1          /**************************************************************************************
+   2          *                             动态数码管显示实验                                                                                                  *
+   3          实现现象：下载程序后数码管从左至右显示0-7。
+   4          注意事项：                                                                                                                                                                
+   5          ***************************************************************************************/
    6          
-   7          typedef unsigned char u8;
+   7          #include "reg52.h"                       //此文件中定义了单片机的一些特殊功能寄存器
    8          
-   9          u8 nres[8];
-  10          
-  11          void delay(int i){while(i--);}
-  12          
-  13            /*
-  14             //这里为什么向高位左移2呢？
-  15             //因为它对接38译码器的时候，使用的是P2^2,P2^3,P2^4 
-  16             //所以需要左移2位，P2管脚的输出才能对的上38译码器
-  17             */
-  18          void display(u8 *num,int pos){
-  19   1         unsigned char a=0x00;
-  20   1         a=a+pos;
-  21   1         selector=a<<2;
-  22   1       
-  23   1         led=num[pos];
-  24   1      
-  25   1      }
-  26          
-  27          
-  28          //显示该数码管数组
-  29          void dynamicLED(u8 *nr){
-  30   1                      u8 x=0x00;              
-  31   1                      for(x=0;x<8;x++){
-  32   2                              
-  33   2                              display(nr,x);
-  34   2                              delay(250); //延时 2500us = 2.5 ms 显示正常
-  35   2                      
-  36   2                      
-  37   2                      }
-  38   1      }
-  39          
-  40          //把数字转化为数码管编码
-  41          u8 getLEDCodeByNum(int num){
-  42   1         u8 n[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
-  43   1         if(num<0||num>9){
-  44   2                      return 0x40;  //如果不是数字，则返回-的编码
-  45   2         }else{
-  46   2                      return  n[num];
-  47   2         }
-  48   1      
-  49   1      }
-  50          
-  51          //把数字的数组  转化为  数码管编码的数组
-  52          u8* changeNumArr2LedCodeArr(int *num){
-  53   1                      
-  54   1                      int i;
-  55   1                      for(i=0;i<8;i++){
-C51 COMPILER V9.01   MAIN                                                                  10/23/2018 20:25:13 PAGE 2   
+   9          typedef unsigned int u16;         //对数据类型进行声明定义
+  10          typedef unsigned char u8;
+  11          
+  12          sbit LSA=P2^2;
+  13          sbit LSB=P2^3;
+  14          sbit LSC=P2^4;
+  15          
+  16          //u8 code smgduan[17]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+  17                                          //      0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};//显示0~F的值
+  18          u8 code smgduan[17]={0x06,0x6f,0x6f,0x4f,0x06,0x06,0x3f,0x6d,
+  19                                                  0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};//显示0~F的值
+  20          
+  21          /*******************************************************************************
+  22          * 函 数 名         : delay
+  23          * 函数功能                 : 延时函数，i=1时，大约延时10us
+  24          *******************************************************************************/
+  25          void delay(u16 i)
+  26          {
+  27   1              while(i--);     
+  28   1      }
+  29          
+  30          /*******************************************************************************
+  31          * 函 数 名         : DigDisplay
+  32          * 函数功能                 : 数码管动态扫描函数，循环扫描8个数码管显示
+  33          *******************************************************************************/
+  34          void DigDisplay()
+  35          {
+  36   1              u8 i;
+  37   1              for(i=0;i<8;i++)
+  38   1              {
+  39   2                      switch(i)        //位选，选择点亮的数码管，
+  40   2                      {
+  41   3                              case(0):
+  42   3                                      LSA=0;LSB=0;LSC=0; break;//显示第0位
+  43   3                              case(1):
+  44   3                                      LSA=1;LSB=0;LSC=0; break;//显示第1位
+  45   3                              case(2):
+  46   3                                      LSA=0;LSB=1;LSC=0; break;//显示第2位
+  47   3                              case(3):
+  48   3                                      LSA=1;LSB=1;LSC=0; break;//显示第3位
+  49   3                              case(4):
+  50   3                                      LSA=0;LSB=0;LSC=1; break;//显示第4位
+  51   3                              case(5):
+  52   3                                      LSA=1;LSB=0;LSC=1; break;//显示第5位
+  53   3                              case(6):
+  54   3                                      LSA=0;LSB=1;LSC=1; break;//显示第6位
+  55   3                              case(7):
+C51 COMPILER V9.01   MAIN                                                                  05/29/2019 23:06:24 PAGE 2   
 
-  56   2                         nres[i]=getLEDCodeByNum(*(num+i));
-  57   2                      }
-  58   1                      return nres;
-  59   1      
-  60   1      }
-  61          void main(){
-  62   1              while(1){
-  63   2                      //u8 ne[8]={0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f};
-  64   2                      //dynamicLED(ne);
-  65   2      
-  66   2                      int num[8]={7,9,-1,5,5,-1,3,2};
-  67   2                      u8 *np=changeNumArr2LedCodeArr(num);
-  68   2                      dynamicLED(np);
-  69   2                      
-  70   2      
-  71   2                      
-  72   2                      
-  73   2              }
-  74   1              
-  75   1      }
+  56   3                                      LSA=1;LSB=1;LSC=1; break;//显示第7位    
+  57   3                      }
+  58   2                      P0=smgduan[i];//发送段码
+  59   2                      delay(100); //间隔一段时间扫描  
+  60   2                      P0=0x00;//消隐
+  61   2              }
+  62   1      }
+  63          
+  64          /*******************************************************************************
+  65          * 函 数 名       : main
+  66          * 函数功能               : 主函数
+  67          * 输    入       : 无
+  68          * 输    出       : 无
+  69          *******************************************************************************/
+  70          void main()
+  71          {       
+  72   1              while(1)
+  73   1              {       
+  74   2                      DigDisplay();  //数码管显示函数 
+  75   2              }               
+  76   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    241    ----
-   CONSTANT SIZE    =     26    ----
+   CODE SIZE        =    125    ----
+   CONSTANT SIZE    =     17    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      8      40
+   DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
