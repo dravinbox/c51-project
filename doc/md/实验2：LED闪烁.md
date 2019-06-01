@@ -11,9 +11,9 @@
 - typedef的使用
 
 ```c
-#typedef usigned char u8;
+typedef usigned char u8;
 
-#typedef usigned char u16;
+typedef usigned char u16;
 
 //这样使用u8和u16就更加方便地定义一个或者两个字节
 ```
