@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.41                                                               05/29/2019  21:49:45  PAGE 1
+LX51 LINKER/LOCATER V4.41                                                               06/01/2019  19:31:35  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.41, INVOKED BY:
@@ -67,7 +67,7 @@ DELAY1S/MAIN                ----- -----  ----- -----
 
 
 
-LX51 LINKER/LOCATER V4.41                                                             05/29/2019  21:49:45  PAGE 2
+LX51 LINKER/LOCATER V4.41                                                             06/01/2019  19:31:35  PAGE 2
 
 
 PUBLIC SYMBOLS OF MODULE:  project (MAIN)
@@ -135,7 +135,7 @@ PUBLIC SYMBOLS OF MODULE:  project (MAIN)
 *SFR* 00000099H   DATA     BYTE      SBUF
 *SFR* 00000098H   DATA     BYTE      SCON
 *SFR* 00000098H.7 DATA     BIT       SM0
-LX51 LINKER/LOCATER V4.41                                                             05/29/2019  21:49:45  PAGE 3
+LX51 LINKER/LOCATER V4.41                                                             06/01/2019  19:31:35  PAGE 3
 
 
 *SFR* 00000098H.6 DATA     BIT       SM1
@@ -203,7 +203,7 @@ SYMBOL TABLE OF MODULE:  project (MAIN)
       000000CAH   SFRSYM    DATA     BYTE      RCAP2L
       000000C8H.1 SFRSYM    DATA     BIT       C_T2
       000000B0H.6 SFRSYM    DATA     BIT       WR
-LX51 LINKER/LOCATER V4.41                                                             05/29/2019  21:49:45  PAGE 4
+LX51 LINKER/LOCATER V4.41                                                             06/01/2019  19:31:35  PAGE 4
 
 
       000000C8H.5 SFRSYM    DATA     BIT       RCLK
@@ -271,7 +271,7 @@ SYMBOL TABLE OF MODULE:  project (MAIN)
       010000B8H   LINE      CODE     ---       #11
       010000BAH   LINE      CODE     ---       #12
       010000BCH   LINE      CODE     ---       #13
-LX51 LINKER/LOCATER V4.41                                                             05/29/2019  21:49:45  PAGE 5
+LX51 LINKER/LOCATER V4.41                                                             06/01/2019  19:31:35  PAGE 5
 
 
       010000C4H   LINE      CODE     ---       #14
