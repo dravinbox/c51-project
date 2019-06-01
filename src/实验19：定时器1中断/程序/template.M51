@@ -1,0 +1,130 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/22/2016  16:24:29  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+J:\MDK4\C51\BIN\BL51.EXE main.obj TO template RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  J:\MDK4\C51\LIB\C51S.LIB (?C_STARTUP)
+  J:\MDK4\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  template (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?MAIN
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0011H     UNIT         ?CO?MAIN
+            CODE    0014H     0005H     UNIT         ?PR?MAIN?MAIN
+                    0019H     0002H                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+            CODE    001EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    00AAH     0048H     UNIT         ?PR?TIMER1?MAIN
+            CODE    00F2H     0010H     UNIT         ?PR?TIMER1INIT?MAIN
+            CODE    0102H     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   template (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?TIMER1?MAIN
+  +--> ?CO?MAIN
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?TIMER1INIT?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  template (MAIN)
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2016  16:24:29  PAGE 2
+
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0014H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  C:00AAH         PUBLIC        Timer1
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.3       PUBLIC        ET1
+  C:00F2H         PUBLIC        Timer1Init
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:00C8H         PUBLIC        T2CON
+  D:000AH         PUBLIC        n
+  C:0003H         PUBLIC        smgduan
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TIMER1INIT
+  C:00F2H         LINE#         22
+  C:00F2H         LINE#         23
+  C:00F2H         LINE#         24
+  C:00F5H         LINE#         26
+  C:00F8H         LINE#         27
+  C:00FBH         LINE#         28
+  C:00FDH         LINE#         29
+  C:00FFH         LINE#         30
+  C:0101H         LINE#         31
+  -------         ENDPROC       TIMER1INIT
+  -------         PROC          MAIN
+  C:0014H         LINE#         39
+  C:0014H         LINE#         40
+  C:0014H         LINE#         41
+  C:0017H         LINE#         42
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER1
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:00AAH         LINE#         51
+  C:00B7H         LINE#         54
+  C:00BAH         LINE#         55
+  C:00BDH         LINE#         56
+  C:00C5H         LINE#         57
+  C:00CDH         LINE#         58
+  C:00CDH         LINE#         59
+  C:00D3H         LINE#         60
+  C:00DFH         LINE#         61
+  C:00E7H         LINE#         62
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2016  16:24:29  PAGE 3
+
+
+  C:00E7H         LINE#         63
+  -------         ENDPROC       TIMER1
+  -------         ENDMOD        MAIN
+
+Program Size: data=12.0 xdata=0 code=260
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

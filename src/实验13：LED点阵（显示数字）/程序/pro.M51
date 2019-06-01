@@ -1,0 +1,93 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/13/2016  09:37:50  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE main.obj TO pro
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  pro (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0098H     UNIT         ?CO?MAIN
+            CODE    009BH     0047H     UNIT         ?PR?MAIN?MAIN
+            CODE    00E2H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   pro (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  0008H    0001H
+  +--> ?CO?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  pro (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:009BH         PUBLIC        main
+  C:000BH         PUBLIC        CHARCODE
+  C:0003H         PUBLIC        TAB
+  -------         PROC          MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2016  09:37:50  PAGE 2
+
+
+  -------         DO            
+  D:0005H         SYMBOL        tab
+  D:0008H         SYMBOL        j
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:009BH         LINE#         70
+  C:009BH         LINE#         71
+  C:009BH         LINE#         75
+  C:009BH         LINE#         76
+  C:009BH         LINE#         77
+  C:009EH         LINE#         78
+  C:009EH         LINE#         79
+  C:00A0H         LINE#         80
+  C:00A0H         LINE#         81
+  C:00A3H         LINE#         82
+  C:00C0H         LINE#         83
+  C:00C7H         LINE#         84
+  C:00CBH         LINE#         85
+  C:00D6H         LINE#         86
+  C:00D8H         LINE#         87
+  C:00DDH         LINE#         88
+  C:00DDH         LINE#         89
+  C:00E0H         LINE#         90
+  C:00E0H         LINE#         91
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=10.0 xdata=0 code=238
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

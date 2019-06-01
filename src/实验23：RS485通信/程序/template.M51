@@ -1,0 +1,138 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/23/2016  14:32:48  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+J:\MDK4\C51\BIN\BL51.EXE main.obj TO template RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  J:\MDK4\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  template (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0018H     UNIT         ?PR?USARTINIT?MAIN
+            CODE    001BH     0005H     UNIT         ?PR?MAIN?MAIN
+                    0020H     0003H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     0032H     UNIT         ?PR?USART?MAIN
+            CODE    0058H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0064H     000BH     UNIT         ?PR?_DELAY?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   template (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?USART?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?USARTINIT?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  template (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/23/2016  14:32:48  PAGE 2
+
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  C:0026H         PUBLIC        Usart
+  C:0064H         PUBLIC        _delay
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:001BH         PUBLIC        main
+  B:0090H.0       PUBLIC        RS485DIR
+  C:0003H         PUBLIC        UsartInit
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  C:0064H         LINE#         20
+  C:0064H         LINE#         21
+  C:0064H         LINE#         22
+  C:006EH         LINE#         23
+  -------         ENDPROC       _DELAY
+  -------         PROC          USARTINIT
+  C:0003H         LINE#         31
+  C:0003H         LINE#         32
+  C:0003H         LINE#         33
+  C:0006H         LINE#         34
+  C:0009H         LINE#         35
+  C:000CH         LINE#         36
+  C:000FH         LINE#         37
+  C:0012H         LINE#         38
+  C:0014H         LINE#         39
+  C:0016H         LINE#         40
+  C:0018H         LINE#         41
+  C:001AH         LINE#         42
+  -------         ENDPROC       USARTINIT
+  -------         PROC          MAIN
+  C:001BH         LINE#         50
+  C:001BH         LINE#         51
+  C:001BH         LINE#         52
+  C:001EH         LINE#         53
+  -------         ENDPROC       MAIN
+  -------         PROC          USART
+  -------         DO            
+  D:0005H         SYMBOL        receiveData
+  -------         ENDDO         
+  C:0026H         LINE#         62
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/23/2016  14:32:48  PAGE 3
+
+
+  C:0035H         LINE#         66
+  C:0037H         LINE#         67
+  C:0039H         LINE#         68
+  C:0040H         LINE#         69
+  C:0042H         LINE#         70
+  C:0044H         LINE#         71
+  C:0047H         LINE#         72
+  C:0049H         LINE#         73
+  C:004BH         LINE#         74
+  -------         ENDPROC       USART
+  -------         ENDMOD        MAIN
+
+Program Size: data=9.0 xdata=0 code=108
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
