@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   MAIN                                                                  05/29/2019 19:19:34 PAGE 1   
+C51 COMPILER V9.01   MAIN                                                                  05/30/2019 21:55:46 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
@@ -7,66 +7,105 @@ COMPILER INVOKED BY: D:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
-   1          #include "reg52.h"
-   2          #include "intrins.h"
-   3          
-   4          typedef unsigned char u8;
-   5          typedef unsigned int u16;
-   6          
-   7          #define GPIO_DIG P0
-   8          #define GPIO_KEY P1
-   9          
-  10          u8 code smgduan[16]={0x3f,0x06,0x5b,0x4f,
-  11                                                  0x66,0x6d,0x7d,0x07,
-  12                                                  0x7f,0x6f,0x77,0x7c,
-  13                                                  0x39,0x5e,0x79,0x71};
-  14          u8 keyValue;
-  15          void delay(u16 i){while(i--);}
-  16          
-  17          //这个函数能修改KeyValue的值0-15
-  18          void keyDown(){
-  19   1              char a=0;
-  20   1              GPIO_KEY=0x0f;
-  21   1              if(GPIO_KEY!=0x0f){
-  22   2                      delay(1000);
-  23   2                      if(GPIO_KEY!=0x0f){
-  24   3                               switch(GPIO_KEY){
-  25   4                                      case(0x07) :keyValue=0;break;
-  26   4                                      case(0x0b) :keyValue=1;break;
-  27   4                                      case(0x0d) :keyValue=2;break;
-  28   4                                      case(0x0e) :keyValue=3;break;
-  29   4                               }
-  30   3                               GPIO_KEY=0xf0;
-  31   3                               switch(GPIO_KEY){
-  32   4                                      case(0x70) :keyValue=keyValue;break;
-  33   4                                      case(0xb0) :keyValue=keyValue+4;break;
-  34   4                                      case(0xd0) :keyValue=keyValue+8;break;
-  35   4                                      case(0xe0) :keyValue=keyValue+12;break;
-  36   4                               }
-  37   3                               while((a<50)&&(GPIO_KEY!=0xf0)){
-  38   4                                       delay(1000);
-  39   4                                       a++;
-  40   4                               }
-  41   3                      }
-  42   2              }
-  43   1      }                 
-  44          
-  45          void main(){
-  46   1      
-  47   1              while(1){
-  48   2              
-  49   2                      keyDown();      
-  50   2                      GPIO_DIG=~smgduan[keyValue];
-  51   2              }
-  52   1              
-  53   1      }
+   1          /**************************************************************************************
+   2          *                             矩阵按键实验                                                                                                *
+   3          实现现象：下载程序后数码管显示0，按下矩阵按键上的按键显示对应的数字
+   4                                  S1-S4：0-3
+   5                                  S5-S8：4-7
+   6                                  S9-S12：8-B
+   7                                  S13-S16：C-F。
+   8          注意事项：                                                                                                                                                                
+   9          ***************************************************************************************/
+  10          
+  11          #include "reg52.h"                       //此文件中定义了单片机的一些特殊功能寄存器
+  12          
+  13          typedef unsigned int u16;         //对数据类型进行声明定义
+  14          typedef unsigned char u8;
+  15          
+  16          #define GPIO_DIG P0
+  17          #define GPIO_KEY P1
+  18          
+  19          
+  20          u8 KeyValue;    //用来存放读取到的键值
+  21          
+  22          
+  23          u8 code smgduan[17]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+  24                                                  0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};//显示0~F的值
+  25          
+  26          /*******************************************************************************
+  27          * 函 数 名         : delay
+  28          * 函数功能                 : 延时函数，i=1时，大约延时10us
+  29          *******************************************************************************/
+  30          void delay(u16 i)
+  31          {
+  32   1              while(i--);     
+  33   1      }
+  34          
+  35          /*******************************************************************************
+  36          * 函 数 名         : KeyDown
+  37          * 函数功能                 : 检测有按键按下并读取键值
+  38          * 输    入         : 无
+  39          * 输    出         : 无
+  40          *******************************************************************************/
+  41          void KeyDown(void)
+  42          {
+  43   1              char a=0;
+  44   1              GPIO_KEY=0x0f;
+  45   1              if(GPIO_KEY!=0x0f)//读取按键是否按下
+  46   1              {
+  47   2                      delay(1000);//延时10ms进行消抖
+  48   2                      if(GPIO_KEY!=0x0f)//再次检测键盘是否按下
+  49   2                      {       
+  50   3                              //测试列
+  51   3                              GPIO_KEY=0X0F;
+  52   3                              switch(GPIO_KEY)
+  53   3                              {
+  54   4                                      case(0X07):     KeyValue=0;break;
+  55   4                                      case(0X0b):     KeyValue=1;break;
+C51 COMPILER V9.01   MAIN                                                                  05/30/2019 21:55:46 PAGE 2   
 
+  56   4                                      case(0X0d): KeyValue=2;break;
+  57   4                                      case(0X0e):     KeyValue=3;break;
+  58   4                              }
+  59   3                              //测试行
+  60   3                              GPIO_KEY=0XF0;
+  61   3                              switch(GPIO_KEY)
+  62   3                              {
+  63   4                                      case(0X70):     KeyValue=KeyValue;break;
+  64   4                                      case(0Xb0):     KeyValue=KeyValue+4;break;
+  65   4                                      case(0Xd0): KeyValue=KeyValue+8;break;
+  66   4                                      case(0Xe0):     KeyValue=KeyValue+12;break;
+  67   4                              }
+  68   3                              while((a<50)&&(GPIO_KEY!=0xf0))  //检测按键松手检测
+  69   3                              {
+  70   4                                      delay(1000);
+  71   4                                      a++;
+  72   4                              }
+  73   3                      }
+  74   2              }
+  75   1      }
+  76          
+  77          
+  78          /*******************************************************************************
+  79          * 函 数 名       : main
+  80          * 函数功能               : 主函数
+  81          * 输    入       : 无
+  82          * 输    出       : 无
+  83          *******************************************************************************/
+  84          void main()
+  85          {       
+  86   1      
+  87   1              while(1)
+  88   1              {       
+  89   2                      KeyDown();                 //按键判断函数
+  90   2                      GPIO_DIG=~smgduan[KeyValue];      //
+  91   2              }               
+  92   1      }
 
-C51 COMPILER V9.01   MAIN                                                                  05/29/2019 19:19:34 PAGE 2   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    154    ----
-   CONSTANT SIZE    =     16    ----
+   CODE SIZE        =    157    ----
+   CONSTANT SIZE    =     17    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      1       1

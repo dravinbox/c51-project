@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        05/29/2019  21:46:07  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/30/2019  21:55:46  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -27,11 +27,11 @@ LINK MAP OF MODULE:  project (MAIN)
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     0081H     UNIT         ?PR?KEYDOWN?MAIN
-            CODE    0084H     0010H     UNIT         ?CO?MAIN
-            CODE    0094H     000EH     UNIT         ?PR?MAIN?MAIN
-            CODE    00A2H     000CH     UNIT         ?C_C51STARTUP
-            CODE    00AEH     000BH     UNIT         ?PR?_DELAY?MAIN
+            CODE    0003H     0084H     UNIT         ?PR?KEYDOWN?MAIN
+            CODE    0087H     0011H     UNIT         ?CO?MAIN
+            CODE    0098H     000EH     UNIT         ?PR?MAIN?MAIN
+            CODE    00A6H     000CH     UNIT         ?C_C51STARTUP
+            CODE    00B2H     000BH     UNIT         ?PR?_DELAY?MAIN
 
 
 
@@ -59,7 +59,7 @@ SYMBOL TABLE OF MODULE:  project (MAIN)
   ----------------------------------
 
   -------         MODULE        MAIN
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/29/2019  21:46:07  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/30/2019  21:55:46  PAGE 2
 
 
   C:0000H         SYMBOL        _ICE_DUMMY_
@@ -67,62 +67,74 @@ SYMBOL TABLE OF MODULE:  project (MAIN)
   D:0090H         PUBLIC        P1
   D:00B0H         PUBLIC        P3
   D:00A8H         PUBLIC        IE
-  C:00AEH         PUBLIC        _delay
+  C:00B2H         PUBLIC        _delay
   D:00B8H         PUBLIC        IP
-  C:0094H         PUBLIC        main
+  C:0098H         PUBLIC        main
+  D:0008H         PUBLIC        KeyValue
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
-  D:0008H         PUBLIC        keyValue
-  C:0003H         PUBLIC        keyDown
+  C:0003H         PUBLIC        KeyDown
   D:00C8H         PUBLIC        T2CON
-  C:0084H         PUBLIC        smgduan
+  C:0087H         PUBLIC        smgduan
   D:00D0H         PUBLIC        PSW
   -------         PROC          _DELAY
   D:0006H         SYMBOL        i
-  C:00AEH         LINE#         15
+  C:00B2H         LINE#         30
+  C:00B2H         LINE#         31
+  C:00B2H         LINE#         32
+  C:00BCH         LINE#         33
   -------         ENDPROC       _DELAY
   -------         PROC          KEYDOWN
   -------         DO            
   D:0009H         SYMBOL        a
   -------         ENDDO         
-  C:0003H         LINE#         18
-  C:0003H         LINE#         19
-  C:0006H         LINE#         20
-  C:0009H         LINE#         21
-  C:000FH         LINE#         22
-  C:0016H         LINE#         23
-  C:001CH         LINE#         24
-  C:002EH         LINE#         25
-  C:0033H         LINE#         26
-  C:0038H         LINE#         27
-  C:003DH         LINE#         28
-  C:0040H         LINE#         29
-  C:0040H         LINE#         30
-  C:0043H         LINE#         31
-  C:0056H         LINE#         32
-  C:005BH         LINE#         33
-  C:005FH         LINE#         34
-  C:0063H         LINE#         35
-  C:0069H         LINE#         36
-  C:0069H         LINE#         37
-  C:0078H         LINE#         38
-  C:007FH         LINE#         39
-  C:0081H         LINE#         40
-  C:0083H         LINE#         41
-  C:0083H         LINE#         42
-  C:0083H         LINE#         43
+  C:0003H         LINE#         41
+  C:0003H         LINE#         42
+  C:0003H         LINE#         43
+  C:0006H         LINE#         44
+  C:0009H         LINE#         45
+  C:000FH         LINE#         46
+  C:000FH         LINE#         47
+  C:0016H         LINE#         48
+  C:001CH         LINE#         49
+  C:001CH         LINE#         51
+  C:001FH         LINE#         52
+  C:0031H         LINE#         53
+  C:0031H         LINE#         54
+  C:0036H         LINE#         55
+  C:003BH         LINE#         56
+  C:0040H         LINE#         57
+  C:0043H         LINE#         58
+  C:0043H         LINE#         60
+  C:0046H         LINE#         61
+  C:0059H         LINE#         62
+  C:0059H         LINE#         63
+  C:005EH         LINE#         64
+  C:0062H         LINE#         65
+  C:0066H         LINE#         66
+  C:006CH         LINE#         67
+  C:006CH         LINE#         68
+  C:007BH         LINE#         69
+  C:007BH         LINE#         70
+  C:0082H         LINE#         71
+  C:0084H         LINE#         72
+  C:0086H         LINE#         73
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/30/2019  21:55:46  PAGE 3
+
+
+  C:0086H         LINE#         74
+  C:0086H         LINE#         75
   -------         ENDPROC       KEYDOWN
   -------         PROC          MAIN
-  C:0094H         LINE#         45
-  C:0094H         LINE#         47
-  C:0094H         LINE#         49
-  C:0097H         LINE#         50
-  C:00A0H         LINE#         51
+  C:0098H         LINE#         84
+  C:0098H         LINE#         85
+  C:0098H         LINE#         87
+  C:0098H         LINE#         88
+  C:0098H         LINE#         89
+  C:009BH         LINE#         90
+  C:00A4H         LINE#         91
   -------         ENDPROC       MAIN
-BL51 BANKED LINKER/LOCATER V6.22                                                      05/29/2019  21:46:07  PAGE 3
-
-
   -------         ENDMOD        MAIN
 
-Program Size: data=11.0 xdata=0 code=185
+Program Size: data=11.0 xdata=0 code=189
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
