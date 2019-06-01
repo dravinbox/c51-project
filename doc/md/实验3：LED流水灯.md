@@ -30,9 +30,9 @@ _cror_(a,b);
 ```
 
 
-## 试验图
+## 实验图
 ![syled2](/src/实验3：LED流水灯/接线图.JPG)
 
-## 试验代码
+## 实验代码
 
-[jump](/src/实验3：LED流水灯/程序/main.c)
+[Jump](/src/实验3：LED流水灯/程序/main.c)

@@ -27,9 +27,9 @@ void delay(u16 i){
 ```
 
 
-## 试验图
+## 实验图
 ![syled2](/src/实验2：LED闪烁/接线图.JPG)
 
-## 试验代码
+## 实验代码
 
-[jump](/src/实验2：LED闪烁/程序/main.c)
+[Jump](/src/实验2：LED闪烁/程序/main.c)
