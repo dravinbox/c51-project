@@ -15,4 +15,4 @@ sbit led=P0^0
 
 ## 试验代码
 
-[jump](/src/实验1：点亮第一个LED/程序/)
+[jump](/src/实验1：点亮第一个LED/程序/main.c)

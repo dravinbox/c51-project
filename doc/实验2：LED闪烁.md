@@ -32,4 +32,4 @@ void delay(u16 i){
 
 ## 试验代码
 
-[jump](/src/实验2：LED闪烁/)
+[jump](/src/实验2：LED闪烁/程序/main.c)
