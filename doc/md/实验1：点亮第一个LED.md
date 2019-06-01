@@ -2,7 +2,7 @@
 
 ## 原理
 
-![syled](image/sy_led1.png)
+![syled](/doc/image/sy_led1.png)
 
 ## c语言知识
 

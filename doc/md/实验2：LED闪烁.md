@@ -4,7 +4,7 @@
 
 一段时间给LED输出高电平，一段时间给LED输出低电平
 
-![syled](image/sy_led1.png)
+![syled](/doc/image/sy_led1.png)
 
 ## c语言知识
 
